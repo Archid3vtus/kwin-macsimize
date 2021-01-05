@@ -8,6 +8,7 @@ function log(msg) {
 }
 
 function moveToNewDesktop(client) {
+    if (client.screen > 0) return;
     state.savedDesktops[client.windowId] = client.desktop;
 
     var next = workspace.desktops + 1;
@@ -18,6 +19,7 @@ function moveToNewDesktop(client) {
 }
 
 function moveBack(client) {
+    if (client.screen > 0) return;
     var saved = state.savedDesktops[client.windowId];
     if (saved === undefined) {
         log("Ignoring window not previously seen: " + client.caption);
