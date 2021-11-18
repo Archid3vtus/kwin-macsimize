@@ -43,15 +43,24 @@ function rmHandler(client) {
     moveBack(client);
 }
 
+function createdClient(client) {
+	if(client.fullscreen){
+		moveToNewDesktop(client);
+	}
+}
+
+
 function install() {
     workspace.clientMaximizeSet.connect(fullHandler);
     workspace.clientRemoved.connect(rmHandler);
+    workspace.clientAdded.connect(createdClient);
     log("Handler installed");
 }
 
 function uninstall() {
     workspace.clientMaximizeSet.disconnect(handler);
     workspace.clientRemoved.disconnect(rmHandler);
+    workspace.clientAdded.disconnect(createdClient);
     log("Handler cleared");
 }
 
