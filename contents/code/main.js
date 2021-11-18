@@ -43,10 +43,7 @@ function rmHandler(client) {
     moveBack(client);
 }
 
-function createdClient(){
-
-
-function createdClient(client){
+function createdClient(client) {
 	if(client.fullscreen){
 		moveToNewDesktop(client);
 	}
